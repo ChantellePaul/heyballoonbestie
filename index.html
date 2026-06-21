@@ -76,6 +76,11 @@
   .cond{display:none}
   .cond.show{display:block}
 
+  .hint{font-family:'Nunito',sans-serif;font-weight:400;font-size:12.5px;line-height:1.4;color:var(--ink);opacity:.72;margin:-1px 0 7px}
+  fieldset.branch{display:none;border:2px solid #f3dcec;border-radius:16px;padding:16px 14px 2px;margin:2px 0 18px;background:#fdf6fb;min-width:0}
+  fieldset.branch.show{display:block}
+  .branch-title{font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;color:var(--pink);margin-bottom:12px}
+
   footer{text-align:center;padding:26px 22px 50px;color:var(--plum);position:relative;z-index:1}
   footer .ft-tag{font-family:'Fredoka',sans-serif;font-weight:500;color:var(--coral);font-size:16px;margin-bottom:6px}
   footer a{color:var(--pink);text-decoration:none;font-weight:700}
@@ -110,55 +115,83 @@
     </div>
 
     <form id="project-form" action="https://formspree.io/f/meewbylr" method="POST">
-      <h2>Tell us about your celebration</h2>
-      <div class="sub">Fill this in and we'll bring the bestie energy ✨</div>
+      <h2>Hey Bestie! How can we help?</h2>
+      <div class="sub">Fill this in and we'll get back to you shortly.</div>
 
-      <div class="field"><label class="fl">Your name</label><input type="text" name="name" placeholder="First name" required></div>
-      <div class="field"><label class="fl">Email</label><input type="email" name="email" placeholder="you@email.com" required></div>
-      <div class="field"><label class="fl">Phone</label><input type="tel" name="phone" placeholder="0400 000 000"></div>
-
-      <div class="field">
-        <label class="fl">What are you after?</label>
-        <div class="opts">
-          <label class="option-label"><input type="radio" name="project_type" value="Balloons" required><span class="pill">Balloons</span></label>
-          <label class="option-label"><input type="radio" name="project_type" value="Balloon Dome"><span class="pill">Balloon Dome</span></label>
-          <label class="option-label"><input type="radio" name="project_type" value="Jumping Castle"><span class="pill">Jumping Castle</span></label>
-          <label class="option-label"><input type="radio" name="project_type" value="Full Decor / Styling"><span class="pill">Full Decor / Styling</span></label>
-          <label class="option-label"><input type="radio" name="project_type" value="Not sure yet"><span class="pill">Not sure yet</span></label>
-        </div>
-      </div>
-
-      <div class="field cond" id="event-type-field">
-        <label class="fl">What's the occasion?</label>
-        <div class="opts">
-          <label class="option-label"><input type="radio" name="event_type" value="Birthday"><span class="pill">Birthday</span></label>
-          <label class="option-label"><input type="radio" name="event_type" value="Baby Shower"><span class="pill">Baby Shower</span></label>
-          <label class="option-label"><input type="radio" name="event_type" value="Gender Reveal"><span class="pill">Gender Reveal</span></label>
-          <label class="option-label"><input type="radio" name="event_type" value="Wedding / Engagement"><span class="pill">Wedding / Engagement</span></label>
-          <label class="option-label"><input type="radio" name="event_type" value="Corporate / Brand"><span class="pill">Corporate / Brand</span></label>
-          <label class="option-label"><input type="radio" name="event_type" value="Other"><span class="pill">Other</span></label>
-        </div>
-      </div>
-
-      <div class="field"><label class="fl">When's the big day?</label><input type="date" name="event_date"></div>
-      <div class="field"><label class="fl">Where? (suburb or venue)</label><input type="text" name="venue" placeholder="Venue or suburb"></div>
+      <div class="field"><label class="fl">Full name</label><input type="text" name="name" placeholder="First and last name" required></div>
+      <div class="field"><label class="fl">Phone number</label><input type="tel" name="phone" placeholder="0400 000 000" required></div>
+      <div class="field"><label class="fl">Email address</label><input type="email" name="email" placeholder="you@email.com" required></div>
 
       <div class="field">
-        <label class="fl">Add the extras</label>
+        <label class="fl">What are you after? <span style="font-weight:400;opacity:.7">(pick one or more)</span></label>
         <div class="opts">
-          <label class="option-label"><input type="checkbox" name="needs" value="Balloon garland / arch"><span class="pill">Garland / Arch</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Balloon dome"><span class="pill">Dome</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Jumping castle"><span class="pill">Jumping Castle</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Backdrop"><span class="pill">Backdrop</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Plinths / props"><span class="pill">Plinths / Props</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Full styling"><span class="pill">Full Styling</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Delivery & setup"><span class="pill">Delivery &amp; Setup</span></label>
-          <label class="option-label"><input type="checkbox" name="needs" value="Not sure, help me!"><span class="pill">Help me decide!</span></label>
+          <label class="option-label"><input type="checkbox" name="setups" value="Balloon Room Setup" data-branch="branch-room"><span class="pill">Balloon Room Setup</span></label>
+          <label class="option-label"><input type="checkbox" name="setups" value="Balloon Dome Hire" data-branch="branch-dome"><span class="pill">Balloon Dome Hire</span></label>
+          <label class="option-label"><input type="checkbox" name="setups" value="Jumping Castle Hire" data-branch="branch-castle"><span class="pill">Jumping Castle Hire</span></label>
+          <label class="option-label"><input type="checkbox" name="setups" value="Balloon Bouquet" data-branch="branch-bouquet"><span class="pill">Balloon Bouquet</span></label>
         </div>
       </div>
 
-      <div class="field"><label class="fl">Tell us the vision</label><textarea name="details" placeholder="Colours, theme, vibe, how many guests... the more the better (it's more is more, after all 🎈)"></textarea></div>
-      <div class="field"><label class="fl">Budget (optional)</label><input type="text" name="budget" placeholder="Rough budget helps us tailor it"></div>
+      <fieldset class="branch" id="branch-room" data-title="Balloon Room Setup" disabled>
+        <div class="branch-title">🎀 Balloon Room Setup</div>
+        <div class="field"><label class="fl">Date of your event</label><input type="date" name="Balloon Room Setup - Event date" data-label="Event date" required></div>
+        <div class="field"><label class="fl">Time set-up must be completed by</label><div class="hint">Please consider hotel check-in time. We generally need 1 hour to set up.</div><input type="time" name="Balloon Room Setup - Setup completed by" data-label="Setup completed by"></div>
+        <div class="field"><label class="fl">Where is your event located?</label><div class="hint">Please specify if it's a residential location or a hotel.</div><input type="text" name="Balloon Room Setup - Location" data-label="Location" placeholder="Suburb / venue, residential or hotel" required></div>
+        <div class="field"><label class="fl">What is the occasion?</label><input type="text" name="Balloon Room Setup - Occasion" data-label="Occasion" placeholder="Birthday, anniversary, proposal..." required></div>
+        <div class="field"><label class="fl">Budget range</label><div class="hint">Please note prices start from $300.</div><input type="text" name="Balloon Room Setup - Budget" data-label="Budget" placeholder="e.g. $300-$500"></div>
+        <div class="field"><label class="fl">Inspiration link</label><div class="hint">Copy a link from our socials or Pinterest. Or send photos to Instagram @heyballoonbestie or info@heyballoonbestie.com.</div><input type="text" name="Balloon Room Setup - Inspiration link" data-label="Inspiration link" placeholder="Paste a link"></div>
+        <div class="field"><label class="fl">Preferred colour scheme</label><input type="text" name="Balloon Room Setup - Colour scheme" data-label="Colour scheme" placeholder="If you have one"></div>
+        <div class="field"><label class="fl">Anything else?</label><textarea name="Balloon Room Setup - Extras" data-label="Extras" placeholder="E.g. rose petals, flower bouquet, cake"></textarea></div>
+      </fieldset>
+
+      <fieldset class="branch" id="branch-dome" data-title="Balloon Dome Hire" disabled>
+        <div class="branch-title">🟣 Balloon Dome Hire</div>
+        <div class="field"><label class="fl">Event date</label><input type="date" name="Balloon Dome Hire - Event date" data-label="Event date" required></div>
+        <div class="field"><label class="fl">Event start time</label><input type="time" name="Balloon Dome Hire - Start time" data-label="Start time"></div>
+        <div class="field"><label class="fl">Event end time</label><input type="time" name="Balloon Dome Hire - End time" data-label="End time"></div>
+        <div class="field"><label class="fl">Where is the event? Indoors or outdoors?</label><div class="hint">Dome dimensions: tunnel length 2m, sphere diameter 5m. Please make sure there's enough space.</div><input type="text" name="Balloon Dome Hire - Location" data-label="Location" placeholder="Suburb / venue, indoors or outdoors" required></div>
+        <div class="field"><label class="fl">What is the occasion?</label><input type="text" name="Balloon Dome Hire - Occasion" data-label="Occasion" required></div>
+        <div class="field"><label class="fl">Number of guests expected</label><input type="text" name="Balloon Dome Hire - Guests" data-label="Guests"></div>
+        <div class="field"><label class="fl">Age group of guests</label><input type="text" name="Balloon Dome Hire - Age group" data-label="Age group" placeholder="e.g. kids, adults, mixed"></div>
+        <div class="field"><label class="fl">Preferred balloon colours / theme</label><input type="text" name="Balloon Dome Hire - Colours/theme" data-label="Colours/theme"></div>
+        <div class="field"><label class="fl">Anything else?</label><textarea name="Balloon Dome Hire - Extras" data-label="Extras" placeholder="E.g. balloon garland, jumping castle"></textarea></div>
+      </fieldset>
+
+      <fieldset class="branch" id="branch-castle" data-title="Jumping Castle Hire" disabled>
+        <div class="branch-title">🏰 Jumping Castle Hire</div>
+        <div class="field"><label class="fl">Event date</label><input type="date" name="Jumping Castle Hire - Event date" data-label="Event date" required></div>
+        <div class="field"><label class="fl">Event start time</label><input type="time" name="Jumping Castle Hire - Start time" data-label="Start time"></div>
+        <div class="field"><label class="fl">Event end time</label><input type="time" name="Jumping Castle Hire - End time" data-label="End time"></div>
+        <div class="field"><label class="fl">Where is the event? Indoors or outdoors?</label><div class="hint">Castle dimensions: 4m x 5m. Please make sure there's enough space.</div><input type="text" name="Jumping Castle Hire - Location" data-label="Location" placeholder="Suburb / venue, indoors or outdoors" required></div>
+        <div class="field"><label class="fl">What is the occasion?</label><input type="text" name="Jumping Castle Hire - Occasion" data-label="Occasion" required></div>
+        <div class="field"><label class="fl">Number of guests expected</label><input type="text" name="Jumping Castle Hire - Guests" data-label="Guests"></div>
+        <div class="field"><label class="fl">Age group of guests</label><input type="text" name="Jumping Castle Hire - Age group" data-label="Age group"></div>
+        <div class="field"><label class="fl">Anything else?</label><textarea name="Jumping Castle Hire - Extras" data-label="Extras" placeholder="E.g. balloon garland, balloon dome"></textarea></div>
+      </fieldset>
+
+      <fieldset class="branch" id="branch-bouquet" data-title="Balloon Bouquet" disabled>
+        <div class="branch-title">🎈 Balloon Bouquet</div>
+        <div class="field"><label class="fl">Date you require the balloons</label><input type="date" name="Balloon Bouquet - Date required" data-label="Date required" required></div>
+        <div class="field"><label class="fl">Delivery or pick-up?</label><div class="hint">If delivery, which suburb? Otherwise you're welcome to pick up in Penrith.</div><input type="text" name="Balloon Bouquet - Delivery/pickup" data-label="Delivery/pickup" placeholder="Delivery suburb, or pick up in Penrith" required></div>
+        <div class="field"><label class="fl">What is the occasion?</label><input type="text" name="Balloon Bouquet - Occasion" data-label="Occasion" required></div>
+        <div class="field"><label class="fl">Inspiration link</label><div class="hint">Copy a link from our socials or Pinterest. Or send photos to Instagram @heyballoonbestie or info@heyballoonbestie.com.</div><input type="text" name="Balloon Bouquet - Inspiration link" data-label="Inspiration link" placeholder="Paste a link"></div>
+        <div class="field"><label class="fl">Anything else?</label><textarea name="Balloon Bouquet - Extras" data-label="Extras"></textarea></div>
+      </fieldset>
+
+      <div class="field">
+        <label class="fl">How did you hear about us?</label>
+        <div class="opts">
+          <label class="option-label"><input type="radio" name="how_heard" value="Instagram"><span class="pill">Instagram</span></label>
+          <label class="option-label"><input type="radio" name="how_heard" value="Facebook"><span class="pill">Facebook</span></label>
+          <label class="option-label"><input type="radio" name="how_heard" value="TikTok"><span class="pill">TikTok</span></label>
+          <label class="option-label"><input type="radio" name="how_heard" value="Google"><span class="pill">Google</span></label>
+          <label class="option-label"><input type="radio" name="how_heard" value="Word of mouth"><span class="pill">Word of mouth</span></label>
+          <label class="option-label"><input type="radio" name="how_heard" value="Saw it at an event"><span class="pill">Saw it at an event</span></label>
+          <label class="option-label"><input type="radio" name="how_heard" value="Other"><span class="pill">Other</span></label>
+        </div>
+      </div>
+
+      <input type="hidden" name="_subject" value="New Hey Balloon Bestie enquiry 🎈">
 
       <button type="submit" class="btn">Send it over →</button>
     </form>
@@ -188,28 +221,44 @@
     }
   })();
 
-  // conditional occasion field
-  document.querySelectorAll('input[name="project_type"]').forEach(function(radio){
-    radio.addEventListener('change', function(){
-      var show = this.value !== 'Not sure yet';
-      document.getElementById('event-type-field').classList.toggle('show', show);
+  // show / hide each setup's questions
+  document.querySelectorAll('input[name="setups"]').forEach(function(cb){
+    cb.addEventListener('change', function(){
+      var fs=document.getElementById(this.getAttribute('data-branch'));
+      if(!fs) return;
+      if(this.checked){ fs.disabled=false; fs.classList.add('show'); }
+      else{ fs.disabled=true; fs.classList.remove('show'); }
     });
   });
 
-  // Paste your unified Apps Script Web App URL here to log enquiries to Google Sheets
+  // Unified Apps Script Web App URL (logs enquiries to Google Sheets)
   var ENQUIRY_SHEET_URL = "https://script.google.com/macros/s/AKfycbykG0yCgKfw9jEzLCfoYv8muUs0MNiuB1nOn-n9WQpfB-NE700W-tZ54PgagMsOr1Fn/exec";
+
+  function buildSetupDetails(){
+    var out=[];
+    document.querySelectorAll('fieldset.branch').forEach(function(fs){
+      if(fs.disabled) return;
+      var title=fs.getAttribute('data-title');
+      var parts=[];
+      fs.querySelectorAll('[data-label]').forEach(function(inp){
+        var v=(inp.value||'').trim();
+        if(v) parts.push(inp.getAttribute('data-label')+': '+v);
+      });
+      if(parts.length) out.push(title+' - '+parts.join('; '));
+    });
+    return out.join('\n');
+  }
 
   function logEnquiryToSheet(form){
     if(!ENQUIRY_SHEET_URL) return;
     try{
       var fd=new FormData(form);
-      var needs=fd.getAll('needs').join(', ');
       var payload=encodeURIComponent(JSON.stringify({
         kind:'enquiry',
-        name:fd.get('name')||'', email:fd.get('email')||'', phone:fd.get('phone')||'',
-        project_type:fd.get('project_type')||'', event_type:fd.get('event_type')||'',
-        event_date:fd.get('event_date')||'', venue:fd.get('venue')||'',
-        needs:needs, details:fd.get('details')||'', budget:fd.get('budget')||''
+        name:fd.get('name')||'', phone:fd.get('phone')||'', email:fd.get('email')||'',
+        setups:fd.getAll('setups').join(', '),
+        setupDetails:buildSetupDetails(),
+        how_heard:fd.get('how_heard')||''
       }));
       var beacon=new Image();
       beacon.src=ENQUIRY_SHEET_URL+"?payload="+payload+"&t="+Date.now();
@@ -219,14 +268,18 @@
   var form=document.getElementById('project-form');
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if(document.querySelectorAll('input[name="setups"]:checked').length===0){
+      alert('Please pick at least one setup so we know what you need 🎈');
+      return;
+    }
     var btn=form.querySelector('button[type="submit"]');
     btn.disabled=true; btn.textContent='Sending…';
     logEnquiryToSheet(form);
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(res){
         if(res.ok){ form.style.display='none'; document.getElementById('success-msg').style.display='block'; }
-        else{ btn.disabled=false; btn.textContent='Send it over →'; alert('Something went wrong — please try again or email info@heyballoonbestie.com'); }
-      }).catch(function(){ btn.disabled=false; btn.textContent='Send it over →'; alert('Something went wrong — please try again or email info@heyballoonbestie.com'); });
+        else{ btn.disabled=false; btn.textContent='Send it over →'; alert('Something went wrong - please try again or email info@heyballoonbestie.com'); }
+      }).catch(function(){ btn.disabled=false; btn.textContent='Send it over →'; alert('Something went wrong - please try again or email info@heyballoonbestie.com'); });
   });
 </script>
 </body>
